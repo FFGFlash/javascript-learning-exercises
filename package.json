@@ -1,0 +1,28 @@
+{
+  "name": "javascript-learning-exercises",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hands-on exercises for learning JavaScript fundamentals",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "list": "node . --list"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "keywords": [
+    "javascript",
+    "learning",
+    "exercises",
+    "tutorial",
+    "beginner",
+    "education"
+  ],
+  "author": "Drake Taylor",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
