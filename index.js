@@ -4,16 +4,17 @@
  * @version 1.0.0
  */
 
-// Simple debugger for checking how long the script takes to run
-// const start = performance.now()
-// process.on('exit', () => {
-//   const elapsed = performance.now() - start
-//   console.log(`Execution time: ${elapsed}ms`)
-// })
-
 import { execSync } from 'child_process'
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
+// import { createTimer, formatTime, measureTime } from './@modules/timing.js'
+
+// Simple debugger for checking how long the script takes to run
+// const getElapsed = createTimer()
+// process.on('exit', () => {
+//   const elapsed = getElapsed()
+//   console.log(`Execution time: ${formatTime(elapsed)}`)
+// })
 
 const LessonNumberRegex = /^(\d{3})-/
 const ExerciseFileRegex = /^\d{3}-.*exercises\.js$/
@@ -269,6 +270,7 @@ function main() {
 
 // Run the script
 main()
+// measureTime('Executed main in', main)
 
 /**
  * @typedef {Object} Exercise
