@@ -395,14 +395,14 @@ If the terminal doesn't work:
 
 ## Lesson Guide
 
-- [000. Introductions](./000-Introductions/README.md)
-- [001. Basic Syntax and Types](./001-Basic%20Syntax%20and%20Types/README.md)
-- [002. Control Flow](./002-Control%20Flow/README.md)
-- [003. Loops and Iteration](./003-Loops%20and%20Iteration/README.md)
-- [004. Functions](./004-Functions/README.md)
-- [005. Scope and Closures](./005-Scope%20and%20Closures/README.md)
-- [006. Objects](./006-Objects/README.md)
-- [007. Arrays](./007-Arrays/README.md)
+- [000. Introductions](./000-Introductions)
+- [001. Basic Syntax and Types](./001-Basic%20Syntax%20and%20Types)
+- [002. Control Flow](./002-Control%20Flow)
+- [003. Loops and Iteration](./003-Loops%20and%20Iteration)
+- [004. Functions](./004-Functions)
+- [005. Scope and Closures](./005-Scope%20and%20Closures)
+- [006. Objects](./006-Objects)
+- [007. Arrays](./007-Arrays)
 
 ## Getting Help
 
