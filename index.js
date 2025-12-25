@@ -1,10 +1,63 @@
+// Simple debugger for checking how long the script takes to run
+// const start = performance.now()
+// process.on('exit', () => {
+//   const elapsed = performance.now() - start
+//   console.log(`Execution time: ${elapsed}ms`)
+// })
+
 import { execSync } from 'child_process'
-import { readdirSync, readFileSync } from 'fs'
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 
 const LessonNumberRegex = /^(\d{3})-/
 const ExerciseFileRegex = /^\d{3}-.*exercises\.js$/
 const TitleRegex = /\/\/ ={40,}\r?\n\/\/ (.+) Exercises/i
+
+const CACHE_FILE = '.exercise-cache'
+
+/**
+ * Loads the cache from disk
+ * @returns {ExerciseCache} The cached exercises
+ */
+function loadCache() {
+  try {
+    if (existsSync(CACHE_FILE)) {
+      const cachedData = readFileSync(CACHE_FILE, 'utf-8')
+      return JSON.parse(cachedData)
+    }
+  } catch {
+    // If cache is corrupted, ignore it
+    console.warn('Warning: Could not load cache, will rebuild')
+  }
+  return {}
+}
+
+/**
+ * Saves the cache to disk
+ * @param {ExerciseCache} cache - The cache data to save
+ */
+function saveCache(cache) {
+  try {
+    writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8')
+  } catch {
+    // Silent fail - caching is optional
+  }
+}
+
+/**
+ * Extracts the exercise title from the given exercise file
+ * @param {string} filePath - The path to the exercise file
+ * @returns The title extracted from the exercise title
+ */
+function extractTitle(filePath) {
+  try {
+    const content = readFileSync(filePath, 'utf-8')
+    const titleMatch = content.match(TitleRegex)
+    return titleMatch ? titleMatch[1] : 'Unknown'
+  } catch {
+    return 'Unknown'
+  }
+}
 
 /**
  * Discovers all exercise files in the project
@@ -13,6 +66,9 @@ const TitleRegex = /\/\/ ={40,}\r?\n\/\/ (.+) Exercises/i
 function discoverExercises() {
   /** @type {Exercises} */
   const exercises = {}
+
+  const cache = loadCache()
+  let cacheUpdated = false
 
   // Get all directories that match the pattern: 001-, 002-, 003-
   const lessonDirs = readdirSync('.', { withFileTypes: true })
@@ -32,10 +88,25 @@ function discoverExercises() {
       const exerciseNumber = file.match(LessonNumberRegex)[1]
       const exercisePath = join(dir, file)
 
-      // Read the first few lines to get the title of the exercise
-      const content = readFileSync(exercisePath, 'utf-8')
-      const titleMatch = content.match(TitleRegex)
-      const title = titleMatch ? titleMatch[1] : 'Unknown'
+      // Check if we have this in cache
+      const cacheKey = exercisePath
+      let title = null
+
+      // Use cached title if it exists
+      if (cache[cacheKey]) {
+        title = cache[cacheKey].title
+      }
+
+      // If not in cache extract the title
+      if (!title) {
+        title = extractTitle(exercisePath)
+
+        // If the title was successfully extracted, update the cache
+        if (title !== 'Unknown') {
+          cache[cacheKey] = { title }
+          cacheUpdated = true
+        }
+      }
 
       // If exercise number matches the lesson number, use simple key
       // Otherwise, use lesson/exercise format
@@ -51,6 +122,9 @@ function discoverExercises() {
       }
     })
   })
+
+  // Save cache if it was updated
+  if (cacheUpdated) saveCache(cache)
 
   return exercises
 }
@@ -201,4 +275,13 @@ main()
 
 /**
  * @typedef {Record<string, Exercise>} Exercises
+ */
+
+/**
+ * @typedef {Object} ExerciseCacheData
+ * @property {string} title
+ */
+
+/**
+ * @typedef {Record<string, ExerciseCacheData>} ExerciseCache
  */
