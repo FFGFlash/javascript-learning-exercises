@@ -1,4 +1,4 @@
-import { measureTimeAsync } from './timing'
+import { measureTimeAsync } from './timing.js'
 
 /**
  * Helper function to format lesson output and reduce repetition
