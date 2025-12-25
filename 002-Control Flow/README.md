@@ -6,6 +6,29 @@ different pieces of code.
 
 ---
 
+## Table of Contents
+
+- [002. Control Flow](#002-control-flow)
+  - [Table of Contents](#table-of-contents)
+  - [Conditional Execution](#conditional-execution)
+  - [The `if` Statement](#the-if-statement)
+  - [`else` and `else if`](#else-and-else-if)
+  - [Comparison Operators](#comparison-operators)
+  - [Truthy and Falsy Values](#truthy-and-falsy-values)
+  - [Logical Operators](#logical-operators)
+    - [AND (`&&`)](#and-)
+    - [OR (`||`)](#or-)
+    - [NOT (`!`)](#not-)
+  - [Short-Circuiting](#short-circuiting)
+  - [The Conditional (Ternary) Operator](#the-conditional-ternary-operator)
+  - [Block Scope](#block-scope)
+  - [Common Mistakes](#common-mistakes)
+    - [Using assignment instead of comparison](#using-assignment-instead-of-comparison)
+    - [Forgetting braces](#forgetting-braces)
+  - [Summary](#summary)
+
+---
+
 ## Conditional Execution
 
 Conditional execution means that some code only runs **if a condition is met**.

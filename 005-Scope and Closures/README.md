@@ -9,6 +9,27 @@ to understanding JavaScript.
 
 ---
 
+## Table of Contents
+
+- [005. Scope and Closures](#005-scope-and-closures)
+  - [Table of Contents](#table-of-contents)
+  - [What Is Scope?](#what-is-scope)
+  - [Global Scope](#global-scope)
+  - [Function Scope](#function-scope)
+  - [Block Scope (`let` and `const`)](#block-scope-let-and-const)
+  - [`var` vs `let` and `const`](#var-vs-let-and-const)
+  - [Scope Chain](#scope-chain)
+  - [What Is a Closure?](#what-is-a-closure)
+  - [A Simple Closure Example](#a-simple-closure-example)
+    - [What's happening?](#whats-happening)
+  - [Why Closures Are Useful](#why-closures-are-useful)
+  - [Common Mistakes](#common-mistakes)
+    - [Loop Closures](#loop-closures)
+  - [Mental Model to Remember](#mental-model-to-remember)
+  - [Summary](#summary)
+
+---
+
 ## What Is Scope?
 
 **Scope** describes _where a variable can be accessed_ in your program.

@@ -7,6 +7,31 @@ and over would be slow, error-prone, and hard to maintain.
 
 ---
 
+## Table of Contents
+
+- [003. Loops and Iteration](#003-loops-and-iteration)
+  - [Table of Contents](#table-of-contents)
+  - [Why Loops Exist](#why-loops-exist)
+  - [The `while` Loop](#the-while-loop)
+  - [Infinite Loops](#infinite-loops)
+  - [The `do...while` Loop](#the-dowhile-loop)
+  - [The `for` Loop](#the-for-loop)
+  - [Loop Counters](#loop-counters)
+  - [Breaking Out of a Loop](#breaking-out-of-a-loop)
+  - [Skipping an Iteration](#skipping-an-iteration)
+  - [Loop Scope](#loop-scope)
+  - [Common Loop Patterns](#common-loop-patterns)
+    - [Counting](#counting)
+    - [Counting Down](#counting-down)
+    - [Accumulating a Value](#accumulating-a-value)
+  - [When to Use Which Loop](#when-to-use-which-loop)
+  - [Common Mistakes](#common-mistakes)
+    - [Off-by-one errors](#off-by-one-errors)
+    - [Modifying the counter incorrectly](#modifying-the-counter-incorrectly)
+  - [Summary](#summary)
+
+---
+
 ## Why Loops Exist
 
 Imagine you want to print the numbers 1 through 5.

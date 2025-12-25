@@ -8,6 +8,32 @@ configuration values to complex application state.
 
 ---
 
+## Table of Contents
+
+- [006. Objects](#006-objects)
+  - [Table of Contents](#table-of-contents)
+  - [What Is an Object?](#what-is-an-object)
+  - [Creating Objects](#creating-objects)
+  - [Accessing Properties](#accessing-properties)
+    - [Dot Notation](#dot-notation)
+    - [Bracket Notation](#bracket-notation)
+  - [Modifying Objects](#modifying-objects)
+  - [Removing Properties](#removing-properties)
+  - [Objects and Functions](#objects-and-functions)
+  - [Introducing `this`](#introducing-this)
+  - [Objects as Data Containers](#objects-as-data-containers)
+  - [Passing Objects to Functions](#passing-objects-to-functions)
+  - [Nested Objects](#nested-objects)
+  - [Object Destructuring](#object-destructuring)
+    - [Rest Properties (`...rest`)](#rest-properties-rest)
+  - [The Spread Operator (`...`)](#the-spread-operator-)
+  - [Copying Objects](#copying-objects)
+    - [`structuredClone`](#structuredclone)
+    - [`JSON.stringify` and `JSON.parse`](#jsonstringify-and-jsonparse)
+  - [Summary](#summary)
+
+---
+
 ## What Is an Object?
 
 An **object** is a collection of key-value pairs.

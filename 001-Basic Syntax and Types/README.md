@@ -5,6 +5,31 @@ JavaScript code is written and what kinds of values it works with.
 
 ---
 
+## Table of Contents
+
+- [001. Basic Syntax and Types](#001-basic-syntax-and-types)
+  - [Table of Contents](#table-of-contents)
+  - [Statements](#statements)
+  - [Expressions](#expressions)
+  - [Values and Types](#values-and-types)
+    - [Numbers](#numbers)
+    - [Strings](#strings)
+    - [Booleans](#booleans)
+    - [Null and Undefined](#null-and-undefined)
+    - [Variables](#variables)
+      - [`let`](#let)
+      - [`const`](#const)
+      - [`var` (Legacy)](#var-legacy)
+    - [Operators](#operators)
+      - [Arithmetic Operators](#arithmetic-operators)
+      - [Assignment Operators](#assignment-operators)
+      - [Comparison Operators](#comparison-operators)
+  - [Comments](#comments)
+  - [Running JavaScript](#running-javascript)
+  - [Summary](#summary)
+
+---
+
 ## Statements
 
 A **statement** is a single instruction that tells JavaScript to do something.

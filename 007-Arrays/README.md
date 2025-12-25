@@ -8,6 +8,31 @@ commonly used structures in JavaScript.
 
 ---
 
+## Table of Contents
+
+- [007. Arrays](#007-arrays)
+  - [Table of Contents](#table-of-contents)
+  - [What Is an Array?](#what-is-an-array)
+  - [Creating Arrays](#creating-arrays)
+  - [Accessing Array Elements](#accessing-array-elements)
+  - [Array Length](#array-length)
+  - [Modifying Arrays](#modifying-arrays)
+  - [Adding and Removing Elements](#adding-and-removing-elements)
+    - [`push` and `pop`](#push-and-pop)
+    - [`unshift` and `shift`](#unshift-and-shift)
+  - [Iterating Over Arrays](#iterating-over-arrays)
+    - [`for` Loop](#for-loop)
+    - [`for...of` Loop](#forof-loop)
+  - [Arrays and Objects](#arrays-and-objects)
+  - [Array Destructuring](#array-destructuring)
+  - [Rest Elements (`...rest`)](#rest-elements-rest)
+  - [The Spread Operator (`...`)](#the-spread-operator-)
+  - [Combining Arrays](#combining-arrays)
+  - [Arrays Are Objects](#arrays-are-objects)
+  - [Summary](#summary)
+
+---
+
 ## What Is an Array?
 
 An **array** is an ordered list of values.

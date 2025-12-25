@@ -6,6 +6,28 @@ whenever needed.
 
 ---
 
+## Table of Contents
+
+- [004. Functions](#004-functions)
+  - [Table of Contents](#table-of-contents)
+  - [What Is a Function?](#what-is-a-function)
+  - [Declaring a Function](#declaring-a-function)
+  - [Parameters and Arguments](#parameters-and-arguments)
+  - [Returning Values](#returning-values)
+  - [Function Expressions](#function-expressions)
+  - [Arrow Functions](#arrow-functions)
+  - [Calling vs Referencing Functions](#calling-vs-referencing-functions)
+  - [Functions as Values](#functions-as-values)
+  - [Default Parameters](#default-parameters)
+  - [Scope Inside Functions](#scope-inside-functions)
+  - [Early Returns](#early-returns)
+  - [Common Mistakes](#common-mistakes)
+    - [Forgetting to return a value](#forgetting-to-return-a-value)
+    - [Using arrow functions incorrectly](#using-arrow-functions-incorrectly)
+  - [Summary](#summary)
+
+---
+
 ## What Is a Function?
 
 A function is a block of code that:
