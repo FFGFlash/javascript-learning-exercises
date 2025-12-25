@@ -1,3 +1,9 @@
+/**
+ * @file Executes the various exercises within the javascript-learning-exercises repository.
+ * @author Drake Taylor
+ * @version 1.0.0
+ */
+
 // Simple debugger for checking how long the script takes to run
 // const start = performance.now()
 // process.on('exit', () => {
