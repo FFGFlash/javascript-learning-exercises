@@ -18,7 +18,9 @@ import { join } from 'path'
 
 const LessonNumberRegex = /^(\d{3})-/
 const ExerciseFileRegex = /^\d{3}-.*exercises\.js$/
-const TitleRegex = /\/\/ ={40,}\r?\n\/\/ (.+) Exercises/i
+const LessonFunctionRegex = /lesson\s*\(\s*(['"`])(.+?)\1\s*,/
+const ConsoleLogRegex = /console\.log\s*\(\s*(['"`])===\s*(.+?)\s+Exercises\s*===\\n\1\s*\)/
+const TitleCommentRegex = /\/\/ ={40,}\r?\n\/\/ (.+) Exercises/i
 
 const CACHE_FILE = '.exercise-cache'
 
@@ -53,14 +55,28 @@ function saveCache(cache) {
 
 /**
  * Extracts the exercise title from the given exercise file
+ *
+ * Tries multiple patterns in order of preference
+ * 1. lesson('...', () => {}) function call
+ * 2. console.log('=== ... Exercises ===\n')
+ * 3. Comment header
  * @param {string} filePath - The path to the exercise file
  * @returns The title extracted from the exercise title
  */
 function extractTitle(filePath) {
   try {
     const content = readFileSync(filePath, 'utf-8')
-    const titleMatch = content.match(TitleRegex)
-    return titleMatch ? titleMatch[1] : 'Unknown'
+
+    const lessonMatch = content.match(LessonFunctionRegex)
+    if (lessonMatch) return lessonMatch[2]
+
+    const consoleMatch = content.match(ConsoleLogRegex)
+    if (consoleMatch) return consoleMatch[2]
+
+    const titleMatch = content.match(TitleCommentRegex)
+    if (titleMatch) return titleMatch[1]
+
+    return 'Unknown'
   } catch {
     return 'Unknown'
   }
