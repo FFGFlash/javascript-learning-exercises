@@ -1,140 +1,255 @@
 # 007. Arrays
 
-So far, we've worked with individual values and grouped data using objects.
-In this lesson, we'll learn how to work with **lists of values** using **arrays**.
+Arrays are ordered collections of values. They allow you to store
+multiple related values in a single variable and work with them
+as a group.
 
-Arrays are used to store **ordered collections** of data and are one of the most
-commonly used structures in JavaScript.
-
----
-
-## Table of Contents
-
-- [007. Arrays](#007-arrays)
-  - [Table of Contents](#table-of-contents)
-  - [What Is an Array?](#what-is-an-array)
-  - [Creating Arrays](#creating-arrays)
-  - [Accessing Array Elements](#accessing-array-elements)
-  - [Array Length](#array-length)
-  - [Modifying Arrays](#modifying-arrays)
-  - [Adding and Removing Elements](#adding-and-removing-elements)
-    - [`push` and `pop`](#push-and-pop)
-    - [`unshift` and `shift`](#unshift-and-shift)
-  - [Iterating Over Arrays](#iterating-over-arrays)
-    - [`for` Loop](#for-loop)
-    - [`for...of` Loop](#forof-loop)
-  - [Arrays and Objects](#arrays-and-objects)
-  - [Array Destructuring](#array-destructuring)
-  - [Rest Elements (`...rest`)](#rest-elements-rest)
-  - [The Spread Operator (`...`)](#the-spread-operator-)
-  - [Combining Arrays](#combining-arrays)
-  - [Arrays Are Objects](#arrays-are-objects)
-  - [Summary](#summary)
-
----
-
-## What Is an Array?
-
-An **array** is an ordered list of values.
-
-```js
-const numbers = [1, 2, 3, 4, 5]
-```
-
-Each value in an array is stored at a numeric **index**, starting at `0`.
+Arrays are one of the most commonly used data structures in JavaScript.
 
 ---
 
 ## Creating Arrays
 
-Arrays are created using square brackets `[]`.
+Arrays are created using square brackets (`[]`).
 
 ```js
-const empty = []
-
-const colors = ['red', 'green', 'blue']
+const numbers = [1, 2, 3, 4]
+const words = ['apple', 'banana', 'cherry']
+const mixed = [1, 'two', true]
 ```
 
-Arrays can store values of any type.
+Arrays can contain values of any type, including other arrays.
 
 ```js
-const mixed = [1, 'hello', true, null]
+const nested = [
+  [1, 2],
+  [3, 4],
+]
 ```
 
 ---
 
-## Accessing Array Elements
+## Indexing and Length
 
-You access array values using their index.
+Each item in an array has a numeric index, starting at `0`.
 
 ```js
 const colors = ['red', 'green', 'blue']
 
 console.log(colors[0]) // 'red'
-console.log(colors[2]) // 'blue'
+console.log(colors[2]) // 'blue
 ```
 
-Accessing an index that doesn't exist returns `undefined`.
-
----
-
-## Array Length
-
-Arrays have a `length` property.
+The `length` property tells you how many items are in the array.
 
 ```js
-const colors = ['red', 'green', 'blue']
-
 console.log(colors.length) // 3
 ```
 
-The last element of an array can be accessed using `length - 1`.
-
-```js
-console.log(colors[colors.length - 1])
-```
+Because indexing starts at `0`, the last index is always `length - 1`.
 
 ---
 
-## Modifying Arrays
+## Arrays Are Objects
 
-Arrays declared with `const` can still be modified.
+Arrays are a special kind of object in JavaScript
 
 ```js
-const numbers = [1, 2, 3]
+const arr = [1, 2, 3]
 
-numbers[0] = 10
-
-console.log(numbers) // [10, 2, 3]
+typeof arr // 'object'
 ```
+
+They use numeric keys internally and have additional behavior provided
+by `Array.prototype` (which we'll discuss in future lessons).
+
+```js
+arr[0] // same as arr['0']
+```
+
+Even though arrays are objects, they are optimized for **ordered lists**,
+which is why they should be treated differently than plain objects.
 
 ---
 
-## Adding and Removing Elements
+## Mutability
+
+Arrays are **mutable**, meaning their contents can be changed after creation.
+
+```js
+const scores = [10, 20, 30]
+
+scores[1] = 25
+console.log(scores) // [10, 25, 30]
+```
+
+Even if an array is declared with `const`, its contents can still change.
+`const` only prevents reassignment of the variable itself.
+
+---
+
+## Common Mutating Methods
+
+Some array methods **modify the original array**.
 
 ### `push` and `pop`
 
-```js
-const numbers = [1, 2, 3]
+`push` adds items to the end of the array and returns the new length.
 
-const length = numbers.push(4) // add to the end and return the new length
-const number = numbers.pop() // remove the last element and return it
+```js
+const list = ['a', 'b']
+list.push('c') // 3
+console.log(list) // ['a', 'b', 'c']
+```
+
+`pop` removes the last item and returns it
+
+```js
+const list = ['a', 'b', 'c']
+const last = list.pop()
+
+console.log(last) // 'c'
+console.log(list) // ['a', 'b']
 ```
 
 ---
 
-### `unshift` and `shift`
+### `shift` and `unshift`
+
+`shift` removes the first item from the array and returns it.
 
 ```js
-const numbers = [1, 2, 3]
+const list = ['a', 'b', 'c']
+const first = list.shift()
 
-const length = numbers.unshift(0) // add to the beginning and return the new length
-const number = numbers.shift() // remove from the first element and return it
+console.log(first) // 'a'
+console.log(list) // ['b', 'c']
+```
+
+`unshift` adds items to the beginning of the array and returns the new length.
+
+```js
+const list = ['b', 'c']
+list.unshift('a') // 3
+
+console.log(list) // ['a', 'b', 'c']
+```
+
+---
+
+### `splice`
+
+`splice` can remove items at a specific index and returns a new array containing the removed items.
+
+```js
+const items = ['a', 'b', 'c']
+
+const removed = items.splice(1, 1)
+console.log(removed) // ['b']
+console.log(items) // ['a', 'c']
+```
+
+It can also insert items at a specific index.
+
+```js
+const items = ['a', 'c']
+
+items.splice(1, 0, 'b')
+console.log(items) // ['a', 'b', 'c']
+```
+
+---
+
+## Non-Mutating Methods
+
+Some methods return a **new array** without changing the original.
+
+### `slice`
+
+`slice` creates a shallow copy of part (or all) of an array.
+
+```js
+const original = [1, 2, 3, 4]
+const copy = original.slice(1, 3)
+
+console.log(copy) // [2, 3]
+console.log(original) // [1, 2, 3, 4]
+```
+
+Calling `slice()` with no arguments creates a shallow copy of the array.
+
+---
+
+## Array Destructuring
+
+Destructuring lets you extract values from an array into variables.
+
+```js
+const [a, b] = [1, 2]
+
+console.log(a) // 1
+console.log(b) // 2
+```
+
+You can skip elements by leaving empty positions.
+
+```js
+const [first, , third] = [10, 20, 30]
+
+console.log(first) // 10
+console.log(third) // 30
+```
+
+### Rest Elements (`...rest`)
+
+The rest operator collects remaining elements into a new array.
+
+```js
+const [first, ...rest] = [1, 2, 3, 4]
+
+console.log(first) // 1
+console.log(rest) // [2, 3, 4]
+```
+
+The rest operator must always come last.
+
+---
+
+## Spread Operator (`...`)
+
+The spread operator expands an array into individual values
+
+```js
+const nums = [1, 2, 3]
+const copy = [...nums]
+
+console.log(copy) // [1, 2, 3]
+```
+
+It's commonly used to combine arrays.
+
+```js
+const a = [1, 2]
+const b = [3, 4]
+
+const combined = [...a, ...b]
+```
+
+Spread creates a **shallow copy**, not a deep one (for that you can use `structuredClone` discussed in the previous lesson).
+
+It's also commonly used to pass function arguments
+
+```js
+const args = [1, 2, 3]
+
+console.log('Args:', ...args) // Args: 1 2 3
 ```
 
 ---
 
 ## Iterating Over Arrays
+
+Arrays are often processed one item at a time.
 
 ### `for` Loop
 
@@ -153,119 +268,48 @@ for (let i = 0; i < numbers.length; i++) {
 ```js
 const numbers = [1, 2, 3]
 
-for (const number of numbers) {
-  console.log(number)
+for (const value of numbers) {
+  console.log(value)
 }
 ```
 
-`for...of` is often easier to read when you don't need the index.
+`for...of` iterates over values, not indexes.
 
 ---
 
-## Arrays and Objects
+## Array vs Objects
 
-Arrays can store objects.
+Arrays and Objects are both collections, but they are used differently.
 
-```js
-const users = [
-  { name: 'Alex', age: 25 },
-  { name: 'Sam', age: 30 },
-]
-
-console.log(users[0].name) // 'Alex'
-```
-
----
-
-## Array Destructuring
-
-Array destructuring allows you to extract values by position.
+- Arrays are best for **ordered data**
+- Objects are best for **named properties**
 
 ```js
-const colors = ['red', 'green', 'blue']
-
-const [first, , third] = colors
-
-console.log(first) // 'red'
-console.log(third) // 'blue'
+const array = ['Alex', 30]
+const object = { name: 'Alex', age: 30 }
 ```
 
-Note that you can skip elements in an array by adding extra commas without a variable name.
+Although arrays are objects internally, using them as dictionaries is discouraged.
 
----
-
-## Rest Elements (`...rest`)
-
-You can collect remaining values using the rest operator.
-
-```js
-const numbers = [1, 2, 3, 4]
-
-const [first, ...rest] = numbers
-
-console.log(first) // 1
-console.log(rest) // [2, 3, 4]
-```
-
-The rest operator (`...rest`) only works as the **last** property in destructuring.
-
----
-
-## The Spread Operator (`...`)
-
-The spread operator can be used to copy arrays.
-
-```js
-const original = [1, 2, 3]
-const copy = [...original]
-
-copy[0] = 10
-
-console.log(original) // [1, 2, 3]
-console.log(copy) // [10, 2, 3]
-```
-
----
-
-## Combining Arrays
-
-Spread can also be used to merge arrays.
-
-```js
-const a = [1, 2]
-const b = [3, 4]
-
-const combined = [...a, ...b]
-
-console.log(combined) // [1, 2, 3, 4]
-```
-
----
-
-## Arrays Are Objects
-
-Arrays are a special type of objects.
-
-```js
-console.log(typeof []) // 'object'
-```
-
-This means arrays are passed by reference, just like objects.
+If order matters, use an array.\
+If meaning matters, use an object.
 
 ---
 
 ## Summary
 
-In this lesson, we learned:
+- Arrays are ordered, mutable collections
+- Arrays are a specialized kind of object
+- Some methods mutate arrays, others return new ones
+- Destructuring, rest, and spread make array manipulation easier
+- Arrays and objects serve different purposes
 
-- Arrays store ordered lists of values
-- Array indices start at `0`
-- Arrays can be modified even when declared with `const`
-- `push`, `pop`, `shift`, and `unshift` add or remove elements
-- Arrays can be iterated with `for` and `for...of`
-- Destructuring extracts values by position
-- Spread and rest work with arrays just like objects
+In the next lesson, we'll build on this by exploring **built-in objects and utilities**,
+including more expressive ways to transform arrays.
 
-In the next lesson, we'll explore **Common Array Methods**, such as `map`, `filter`, and `reduce`.
+---
+
+See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections)
+to learn more about arrays.
 
 ---
