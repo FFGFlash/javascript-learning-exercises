@@ -208,7 +208,12 @@ While VSCode is recommended, there are also good alternatives:
 
 ## Getting Started
 
-1. Clone or download this repository to your computer
+1. Clone this repository to your computer
+
+```bash
+git clone https://github.com/FFGFlash/javascript-learning-exercises.git
+```
+
 2. Navigate to the project directory in your terminal:
 
 ```bash
@@ -221,6 +226,8 @@ code .
 ```bash
 npm install
 ```
+
+You could download the repository instead but then you wont be able to easily pull updates for future lessons.
 
 ## Running Exercises
 
