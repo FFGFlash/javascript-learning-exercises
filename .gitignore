@@ -142,3 +142,4 @@ vite.config.ts.timestamp-*
 
 # Exercise runner
 .exercise-cache
+private.md
