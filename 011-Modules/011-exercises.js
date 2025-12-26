@@ -283,21 +283,4 @@ lesson('JavaScript Modules', () => {
     // This pattern gives you module-like encapsulation
     // with the ability to create multiple instances
   })
-
-  // ============================================
-  // Super Bonus: Lazy Loading Modules
-  // ============================================
-  exercise('Super Bonus - Lazy Loading Modules', () => {
-    // TODO: Create a 'heavy-module.js' with some complex code
-    // TODO: Use dynamic import() to load it only when needed:
-    // button.addEventListener('click', async () => {
-    //   const module = await import('./heavy-module.js')
-    //   module.doSomething()
-    // })
-
-    // Note: Dynamic imports return a Promise
-    // This is covered in more detail in the next lesson
-
-    console.log('Dynamic imports will be covered in the next lesson!')
-  })
 })
