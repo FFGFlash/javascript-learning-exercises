@@ -22,7 +22,7 @@ export async function lesson(name, fn) {
  * @param {string} name - The name of the exercise.
  * @param {() => void} fn - A callback containing the code related to the exercise.
  */
-export function execise(name, fn) {
+export function exercise(name, fn) {
   console.log(`Exercise ${++counter}: ${name}`)
   measureTime(name, () => {
     try {

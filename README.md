@@ -32,6 +32,7 @@ A collection of hands-on exercises to help you learn JavaScript fundamentals.
     - [Method 1: Using `npm start` (Recommended)](#method-1-using-npm-start-recommended)
     - [Method 2: Using node directly](#method-2-using-node-directly)
     - [Method 3: Using Code Runner extension (VSCode)](#method-3-using-code-runner-extension-vscode)
+    - [Method 4: Using Live Server extension (VSCode)](#method-4-using-live-server-extension-vscode)
     - [Method 4: Using a browser based code editor and runtime](#method-4-using-a-browser-based-code-editor-and-runtime)
     - [Method 5: Using the browser console](#method-5-using-the-browser-console)
   - [Exercise Structure](#exercise-structure)
@@ -165,10 +166,14 @@ Install these extensions to enhance your JavaScript learning experience:
 3. Code Runner (`formulahendry.code-runner`)
    - Run JavaScript code directly from the editor
    - Install: `ext install formulahendry.code-runner`
-   - Use: Right-click in your file and select "Run Code" or press Ctrl+Alt+N
+   - Use: Right-click in your file and select "Run Code" or press `Ctrl+Alt+N` / `Cmd+Alt+N`
 4. Bracket Pair Colorizer (built into VSCode now!)
    - Colors matching brackets - now built-in to VSCode
    - Enable: Add to settings.json: "editor.bracketPairColorization.enabled": true
+5. Live Server (`ritwickdey.LiveServer`)
+   - Server static files locally
+   - Install: `ext install ritwickdey.LiveServer`
+   - Use: Right-click in `.html` file and select "Open in Live Server" or press `Alt+L Alt+O` / `Cmd+L Cmd+O`
 
 ### Recommended VSCode Settings
 
@@ -277,6 +282,14 @@ If you installed the Code Runner extension:
 1. Open the exercise file
 2. Right-click in the edtior
 3. Select "Run Code" or press `Ctrl+Alt+N` (Windows/Linux) or `Cmd+Alt+N` (Mac)
+
+### Method 4: Using Live Server extension (VSCode)
+
+If you installed the Live Server extension and the exercise has a `.html` file:
+
+1. Open the `.html` file
+2. Right-click in the editor
+3. Select "Open with Live Server" or press `Alt+L Alt+O` (Windows/Linux) or `Cmd+L Cmd+O` (Mac)
 
 ### Method 4: Using a browser based code editor and runtime
 

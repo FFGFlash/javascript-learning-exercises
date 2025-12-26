@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Modules Exercises</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      h1 {
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+      }
+
+      .info-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+
+      .warning-box {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+
+      .console-output {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        max-height: 600px;
+        overflow-y: auto;
+      }
+
+      .console-output > * {
+        min-height: 1ch;
+      }
+
+      .console-output .log {
+        color: #d4d4d4;
+        margin: 5px 0;
+      }
+
+      .console-output .error {
+        color: #f48771;
+        margin: 5px 0;
+      }
+
+      .console-output .warn {
+        color: #dcdcaa;
+        margin: 5px 0;
+      }
+
+      .console-output .info {
+        color: #4fc1ff;
+        margin: 5px 0;
+      }
+
+      code {
+        background-color: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+      }
+
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 5px 10px 0;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .instructions {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .instructions ol {
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📦 JavaScript Modules Exercises</h1>
+
+    <div class="info-box">
+      <strong>ℹ️ Note:</strong> This page uses ES Modules. Make sure you're serving this file
+      through a web server (not opening it directly with <code>file://</code>). You can use:
+      <ul>
+        <li>VS Code Live Server extension</li>
+        <li>Python: <code>python -m http.server 8000</code></li>
+        <li>Node: <code>npx serve</code></li>
+      </ul>
+    </div>
+
+    <div class="instructions">
+      <h2>🚀 Getting Started</h2>
+      <ol>
+        <li>Open your browser's Developer Tools (F12 or Cmd+Option+I)</li>
+        <li>Go to the Console tab</li>
+        <li>Click "Run Exercises" below</li>
+        <li>Follow the TODO instructions in <code>011-exercises.js</code></li>
+        <li>Refresh the page after making changes</li>
+      </ol>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Important:</strong> Some exercises require you to create new files. The console
+      will guide you through what needs to be created. Don't worry if you see errors at first -
+      that's expected as you work through the exercises!
+    </div>
+
+    <button onclick="location.reload()">🔄 Refresh Page</button>
+    <button onclick="clearConsole()">🗑️ Clear Console Output</button>
+
+    <h2>Console Output:</h2>
+    <div class="console-output" id="console-output">
+      <div class="info">Waiting for exercises to load...</div>
+    </div>
+
+    <script>
+      // Capture console output and display it on the page
+      const consoleOutput = document.getElementById('console-output')
+      consoleOutput.innerHTML = ''
+
+      const originalLog = console.log
+      const originalError = console.error
+      const originalWarn = console.warn
+      const originalInfo = console.info
+
+      function addToConsole(message, type = 'log') {
+        const div = document.createElement('div')
+        div.className = type
+        div.textContent = message
+        consoleOutput.appendChild(div)
+        consoleOutput.scrollTop = consoleOutput.scrollHeight
+      }
+
+      function formatArgs(args) {
+        return args
+          .map(arg => {
+            if (typeof arg !== 'object' || arg === null) return String(arg)
+            try {
+              return JSON.stringify(arg)
+            } catch {
+              return String(arg)
+            }
+          })
+          .join(' ')
+      }
+
+      console.log = (...args) => {
+        originalLog.apply(console, args)
+        addToConsole(formatArgs(args), 'log')
+      }
+
+      console.error = (...args) => {
+        originalError.apply(console, args)
+        addToConsole(formatArgs(args), 'error')
+      }
+
+      console.warn = (...args) => {
+        originalWarn.apply(console, args)
+        addToConsole(formatArgs(args), 'warn')
+      }
+
+      console.info = (...args) => {
+        originalInfo.apply(console, args)
+        addToConsole(formatArgs(args), 'info')
+      }
+
+      function clearConsole() {
+        consoleOutput.innerHTML = ''
+      }
+
+      // Handle module loading errors
+      window.addEventListener('error', event => {
+        if (event.message.includes('module')) {
+          addToConsole(`❌ Module Error: ${event.message}`, 'error')
+          addToConsole(
+            '💡 Tip: Make sure all required modules exist and are in the correct location',
+            'warn'
+          )
+        }
+      })
+    </script>
+
+    <!-- Load the exercises module -->
+    <script type="module">
+      try {
+        // Import and run exercises
+        await import('./011-exercises.js')
+      } catch (error) {
+        console.error('Failed to load exercises:', error.message)
+        console.error('Make sure all required files exist in the correct locations')
+      }
+    </script>
+  </body>
+</html>
