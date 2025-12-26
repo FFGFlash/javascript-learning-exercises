@@ -8,6 +8,31 @@ Arrays are one of the most commonly used data structures in JavaScript.
 
 ---
 
+## Table of Contents
+
+- [007. Arrays](#007-arrays)
+  - [Table of Contents](#table-of-contents)
+  - [Creating Arrays](#creating-arrays)
+  - [Indexing and Length](#indexing-and-length)
+  - [Arrays Are Objects](#arrays-are-objects)
+  - [Mutability](#mutability)
+  - [Common Mutating Methods](#common-mutating-methods)
+    - [`push` and `pop`](#push-and-pop)
+    - [`shift` and `unshift`](#shift-and-unshift)
+    - [`splice`](#splice)
+  - [Non-Mutating Methods](#non-mutating-methods)
+    - [`slice`](#slice)
+  - [Array Destructuring](#array-destructuring)
+    - [Rest Elements (`...rest`)](#rest-elements-rest)
+  - [Spread Operator (`...`)](#spread-operator-)
+  - [Iterating Over Arrays](#iterating-over-arrays)
+    - [`for` Loop](#for-loop)
+    - [`for...of` Loop](#forof-loop)
+  - [Array vs Objects](#array-vs-objects)
+  - [Summary](#summary)
+
+---
+
 ## Creating Arrays
 
 Arrays are created using square brackets (`[]`).
