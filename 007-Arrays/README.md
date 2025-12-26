@@ -29,6 +29,10 @@ Arrays are one of the most commonly used data structures in JavaScript.
     - [`for` Loop](#for-loop)
     - [`for...of` Loop](#forof-loop)
   - [Array vs Objects](#array-vs-objects)
+  - [Rest Parameters (`...rest`)](#rest-parameters-rest)
+    - [Basic Example](#basic-example)
+    - [Rest Parameters with Other Parameters](#rest-parameters-with-other-parameters)
+    - [Rest Parameters and Array Methods](#rest-parameters-and-array-methods)
   - [Summary](#summary)
 
 ---
@@ -318,6 +322,71 @@ Although arrays are objects internally, using them as dictionaries is discourage
 
 If order matters, use an array.\
 If meaning matters, use an object.
+
+---
+
+## Rest Parameters (`...rest`)
+
+Now that we know what arrays are, we can introduce **rest parameters**. Rest parameters
+allow functions to accept **any number of values** and collect them into an array.
+
+### Basic Example
+
+```js
+function logValues(...values) {
+  for (const value of values) {
+    console.log(value)
+  }
+}
+
+logValues(1, 2, 3) // 1\n2\n3
+```
+
+Here, all arguments passed to the function are collected into a single array called `values`.
+
+---
+
+### Rest Parameters with Other Parameters
+
+A function can have regular parameters **before** a rest parameter.
+
+```js
+function greet(greeting, ...names) {
+  console.log(greeting)
+  console.log(names)
+}
+
+greet('Hello', 'Alex', 'Sam', 'Jordan')
+// 'Hello'
+// ['Alex', 'Sam', 'Jordan']
+```
+
+Rules to remember:
+
+- A function can only have **one** rest parameter
+- The rest parameter must be **last**
+
+---
+
+### Rest Parameters and Array Methods
+
+Because rest parameters create a real array, we can use array methods on them.
+
+```js
+function sum(...numbers) {
+  let total = 0
+
+  for (const n of numbers) {
+    total += n
+  }
+
+  return total
+}
+
+sum(1, 2, 3, 4) // 10
+```
+
+This works because `numbers` is a normal array.
 
 ---
 

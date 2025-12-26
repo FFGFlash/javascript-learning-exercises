@@ -413,7 +413,106 @@ lesson('JavaScript Arrays', () => {
   })
 
   // ============================================
-  // Exercise 32: Fix the Bugs
+  // Exercise 32: Rest Parameters - Basic
+  // ============================================
+  exercise('Rest Parameters - Basic', () => {
+    // TODO: Create a function 'logAll' that takes rest parameters
+    // and logs each value on a separate line
+    // Test your function (uncomment after completing)
+    // logAll(1, 2, 3, 4, 5)
+    // logAll('a', 'b', 'c')
+  })
+
+  // ============================================
+  // Exercise 33: Rest Parameters with Other Parameters
+  // ============================================
+  exercise('Rest Parameters with Other Parameters', () => {
+    // TODO: Create a function 'greet' that takes a greeting as first parameter
+    // and rest parameters for names
+    // It should log the greeting, then log each name
+    // Test your function (uncomment after completing)
+    // greet('Hello', 'Alice', 'Bob', 'Charlie')
+    // greet('Good morning', 'David', 'Eve')
+  })
+
+  // ============================================
+  // Exercise 34: Rest Parameters - Sum Function
+  // ============================================
+  exercise('Rest Parameters - Sum Function', () => {
+    // TODO: Create a function 'sum' that takes any number of arguments
+    // and returns their sum using rest parameters
+    // Test your function (uncomment after completing)
+    // console.log(sum(1, 2, 3))           // 6
+    // console.log(sum(10, 20, 30, 40))    // 100
+    // console.log(sum(5))                 // 5
+  })
+
+  // ============================================
+  // Exercise 35: Rest Parameters - Average Function
+  // ============================================
+  exercise('Rest Parameters - Average Function', () => {
+    // TODO: Create a function 'average' that takes any number of arguments
+    // and returns their average
+    // Handle the case where no arguments are passed (return 0)
+    // Test your function (uncomment after completing)
+    // console.log(average(10, 20, 30))    // 20
+    // console.log(average(5, 10))         // 7.5
+    // console.log(average())              // 0
+  })
+
+  // ============================================
+  // Exercise 36: Rest Parameters - Find Max
+  // ============================================
+  exercise('Rest Parameters - Find Max', () => {
+    // TODO: Create a function 'findMax' that takes any number of arguments
+    // and returns the maximum value
+    // Hint: You can use Math.max with spread on the rest parameter
+    // Test your function (uncomment after completing)
+    // console.log(findMax(1, 5, 3, 9, 2))     // 9
+    // console.log(findMax(10, 20))            // 20
+  })
+
+  // ============================================
+  // Exercise 37: Rest Parameters - Combine Strings
+  // ============================================
+  exercise('Rest Parameters - Combine Strings', () => {
+    // TODO: Create a function 'combineStrings' that takes a separator as first parameter
+    // and rest parameters for strings to join
+    // Return the joined string
+    // Test your function (uncomment after completing)
+    // console.log(combineStrings('-', 'a', 'b', 'c'))        // 'a-b-c'
+    // console.log(combineStrings(' ', 'Hello', 'World'))     // 'Hello World'
+    // console.log(combineStrings(', ', 'A', 'B', 'C', 'D'))  // 'A, B, C, D'
+  })
+
+  // ============================================
+  // Exercise 38: Rest Parameters vs Arguments Object
+  // ============================================
+  exercise('Rest Parameters vs Arguments Object', () => {
+    // This demonstrates why rest parameters are better than the old 'arguments' object
+
+    // Old way (don't use this):
+    function oldSum() {
+      let total = 0
+      for (let i = 0; i < arguments.length; i++) {
+        total += arguments[i]
+      }
+      return total
+    }
+
+    // TODO: Create a new function 'newSum' using rest parameters
+    // that does the same thing but is cleaner
+
+    // TODO: Try to use array methods (like reduce) with rest parameters
+    // This wouldn't work easily with 'arguments'
+
+    // Test both (uncomment after completing)
+    // console.log('Old way:', oldSum(1, 2, 3, 4))
+    // console.log('New way:', newSum(1, 2, 3, 4))
+  })
+
+  // ============================================
+  // Exercise 39: Fix the Bugs
   // ============================================
   exercise('Fix the Bugs', () => {
     // Bug 1: Off-by-one error
@@ -428,6 +527,11 @@ lesson('JavaScript Arrays', () => {
     // for (let i = 0; i < numbers.length; i++) {
     //   numbers.push(i) // Creates infinite loop
     // }
+    // Bug 4: Rest parameter in wrong position
+    // function greet(...names, greeting) {
+    //   console.log(greeting, names.join(', '))
+    // }
+    // greet('Alice', 'Bob', 'Hello')
   })
 
   // ============================================
