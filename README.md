@@ -423,6 +423,10 @@ If the terminal doesn't work:
 - [005. Scope and Closures](./005-Scope%20and%20Closures)
 - [006. Objects](./006-Objects)
 - [007. Arrays](./007-Arrays)
+- [008. Built-in Objects and Utilities](./008-Built-in%20Objects%20and%20Utilities)
+- [009. Equality, Types, and Coercion](./009-Equality,%20Types,%20and%20Coercion)
+- [010. Error Handling](./010-Error%20Handling)
+- [011. Modules](./011-Modules)
 
 ## Getting Help
 
