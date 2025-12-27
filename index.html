@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Exercises - Interactive Runner</title>
+    <link rel="stylesheet" href="@assets/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎓 JavaScript Learning Exercises</h1>
+        <p class="subtitle">Interactive exercise runner with live console output</p>
+      </header>
+
+      <div class="info-box" id="serverInfo">
+        <strong>ℹ️ Server Required:</strong> Make sure you're serving this through a web server for
+        ES Modules to work. Use VS Code Live Server, <code>python -m http.server 8000</code>, or
+        <code>npx serve</code>.
+      </div>
+
+      <div class="error-box" id="errorBox" style="display: none">
+        <strong>❌ Error:</strong> <span id="errorMessage"></span>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <label for="exerciseSelect">Select Exercise:</label>
+          <select id="exerciseSelect" disabled>
+            <option value="">Loading exercises...</option>
+          </select>
+        </div>
+
+        <div class="exercise-info" id="exerciseInfo">
+          <h3>Exercise Details</h3>
+          <p><strong>Title:</strong> <span id="exerciseTitle"></span></p>
+          <p><strong>File:</strong> <code id="exercisePath"></code></p>
+          <p><strong>Lesson:</strong> <span id="exerciseLesson"></span></p>
+        </div>
+
+        <div class="button-group">
+          <button class="btn-run" id="runBtn" onclick="runExercise()">▶️ Run Exercise</button>
+          <button class="btn-clear" onclick="clearConsole()">🗑️ Clear Console</button>
+          <button class="btn-refresh" onclick="location.reload()">🔄 Reload Page</button>
+        </div>
+      </div>
+
+      <div class="console-container">
+        <div class="console-header">
+          <h2>Console Output</h2>
+          <div class="console-stats">
+            <span>Lines: <strong id="lineCount">0</strong></span>
+            <span>Status: <strong id="status">Ready</strong></span>
+          </div>
+        </div>
+        <div class="console-output" id="consoleOutput">
+          <div class="info">Ready to run exercises. Select one from the dropdown above.</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="@scripts/code-runner-web.js"></script>
+  </body>
+</html>

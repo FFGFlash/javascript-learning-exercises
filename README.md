@@ -285,11 +285,12 @@ If you installed the Code Runner extension:
 
 ### Method 4: Using Live Server extension (VSCode)
 
-If you installed the Live Server extension and the exercise has a `.html` file:
+If you installed the Live Server extension:
 
-1. Open the `.html` file
-2. Right-click in the editor
-3. Select "Open with Live Server" or press `Alt+L Alt+O` (Windows/Linux) or `Cmd+L Cmd+O` (Mac)
+1. Run `npm start` to generate the `exercises.cache.json`
+2. Open the `index.html` file
+3. Right-click in the editor
+4. Select "Open with Live Server" or press `Alt+L Alt+O` (Windows/Linux) or `Cmd+L Cmd+O` (Mac)
 
 ### Method 4: Using a browser based code editor and runtime
 
@@ -427,6 +428,7 @@ If the terminal doesn't work:
 - [009. Equality, Types, and Coercion](./009-Equality,%20Types,%20and%20Coercion)
 - [010. Error Handling](./010-Error%20Handling)
 - [011. Modules](./011-Modules)
+- [012. Asynchronous JavaScript](./012-Asynchronous%20JavaScript)
 
 ## Getting Help
 

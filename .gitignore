@@ -141,5 +141,5 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Exercise runner
-.exercise-cache
+exercises.cache.json
 private.md

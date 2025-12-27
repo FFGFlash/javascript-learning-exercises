@@ -4,7 +4,7 @@
   "private": true,
   "description": "Hands-on exercises for learning JavaScript fundamentals",
   "type": "module",
-  "main": "index.js",
+  "main": "@scripts/code-runner-node.js",
   "scripts": {
     "start": "node .",
     "list": "node . --list"

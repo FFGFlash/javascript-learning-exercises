@@ -5,7 +5,7 @@
  */
 
 import { execSync } from 'child_process'
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs'
+import { existsSync, readdirSync, readFileSync, writeFileSync, statSync } from 'fs'
 import { join } from 'path'
 // import { createTimer, formatTime, measureTime } from './@modules/timing.js'
 
@@ -22,7 +22,7 @@ const LessonFunctionRegex = /lesson\s*\(\s*(['"`])(.+?)\1\s*,/
 const ConsoleLogRegex = /console\.log\s*\(\s*(['"`])===\s*(.+?)\s+Exercises\s*===\\n\1\s*\)/
 const TitleCommentRegex = /\/\/ ={40,}\r?\n\/\/ (.+) Exercises/i
 
-const CACHE_FILE = '.exercise-cache'
+const CACHE_FILE = 'exercises.cache.json'
 
 /**
  * Loads the cache from disk
@@ -88,9 +88,7 @@ function extractTitle(filePath) {
  */
 function discoverExercises() {
   /** @type {Exercises} */
-  const exercises = {}
-
-  const cache = loadCache()
+  const exercises = loadCache()
   let cacheUpdated = false
 
   // Get all directories that match the pattern: 001-, 002-, 003-
@@ -111,43 +109,36 @@ function discoverExercises() {
       const exerciseNumber = file.match(LessonNumberRegex)[1]
       const exercisePath = join(dir, file)
 
-      // Check if we have this in cache
-      const cacheKey = exercisePath
-      let title = null
-
-      // Use cached title if it exists
-      if (cache[cacheKey]) {
-        title = cache[cacheKey].title
-      }
-
-      // If not in cache extract the title
-      if (!title) {
-        title = extractTitle(exercisePath)
-
-        // If the title was successfully extracted, update the cache
-        if (title !== 'Unknown') {
-          cache[cacheKey] = { title }
-          cacheUpdated = true
-        }
-      }
-
       // If exercise number matches the lesson number, use simple key
       // Otherwise, use lesson/exercise format
       const key =
         exerciseNumber === lessonNumber ? lessonNumber : `${lessonNumber}/${exerciseNumber}`
 
-      exercises[key] = {
-        path: exercisePath,
-        title,
-        lessonNumber,
-        exerciseNumber,
-        dir,
+      const stats = statSync(exercisePath)
+
+      let exercise = exercises[key]
+      if (!exercise) {
+        exercise = {
+          path: exercisePath,
+          title: extractTitle(exercisePath),
+          lessonNumber,
+          exerciseNumber,
+          dir,
+          mtime: stats.mtimeMs,
+        }
+        cacheUpdated = true
+      } else if (!exercise.mtime || exercise.mtime < stats.mtimeMs) {
+        exercise.title = extractTitle(exercisePath)
+        exercise.mtime = stats.mtimeMs
+        cacheUpdated = true
       }
+
+      exercises[key] = exercise
     })
   })
 
   // Save cache if it was updated
-  if (cacheUpdated) saveCache(cache)
+  if (cacheUpdated) saveCache(exercises)
 
   return exercises
 }
@@ -295,6 +286,7 @@ main()
  * @property {string} lessonNumber
  * @property {string} exerciseNumber
  * @property {string} dir
+ * @property {number} mtime
  */
 
 /**
