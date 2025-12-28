@@ -6,13 +6,13 @@
 // Run this file with Node.js or in your browser.
 
 // Import the helper functions from our modules directory
-import { exercise, lesson } from '../@modules/exercises.js'
+import { exerciseAsync as exercise, lessonAsync as lesson } from '../@modules/exercises.js'
 
-lesson('JavaScript Asynchronous Programming', () => {
+lesson('JavaScript Asynchronous Programming', async () => {
   // ============================================
   // Exercise 1: Understanding Synchronous Execution
   // ============================================
-  exercise('Understanding Synchronous Execution', () => {
+  await exercise('Understanding Synchronous Execution', () => {
     // TODO: Log 'First', 'Second', 'Third' in order
     // Observe that they print sequentially
 
@@ -24,7 +24,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 2: Understanding Asynchronous Execution
   // ============================================
-  exercise('Understanding Asynchronous Execution', () => {
+  await exercise('Understanding Asynchronous Execution', () => {
     // TODO: Use setTimeout to log 'Delayed' after 1 second
     // TODO: Log 'Immediate' right after setting the timeout
     // TODO: Observe the order - which logs first?
@@ -37,7 +37,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 3: setTimeout with Zero Delay
   // ============================================
-  exercise('setTimeout with Zero Delay', () => {
+  await exercise('setTimeout with Zero Delay', () => {
     console.log('A')
 
     setTimeout(() => {
@@ -53,7 +53,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 4: Basic Callbacks
   // ============================================
-  exercise('Basic Callbacks', () => {
+  await exercise('Basic Callbacks', () => {
     // TODO: Create a function 'delayedGreeting' that:
     // - Takes a name and a callback
     // - Waits 1 second
@@ -72,7 +72,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 5: Callback Hell
   // ============================================
-  exercise('Callback Hell', () => {
+  await exercise('Callback Hell', () => {
     // This demonstrates the problem with deeply nested callbacks
 
     function step1(callback) {
@@ -104,7 +104,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 6: Creating a Promise
   // ============================================
-  exercise('Creating a Promise', () => {
+  await exercise('Creating a Promise', () => {
     // TODO: Create a Promise that resolves after 1 second with 'Success!'
 
     const myPromise = new Promise((resolve, reject) => {
@@ -118,7 +118,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 7: Rejecting a Promise
   // ============================================
-  exercise('Rejecting a Promise', () => {
+  await exercise('Rejecting a Promise', () => {
     // TODO: Create a Promise that rejects with an error after 1 second
 
     const failingPromise = new Promise((resolve, reject) => {
@@ -134,7 +134,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 8: Promise.then Chaining
   // ============================================
-  exercise('Promise.then Chaining', () => {
+  await exercise('Promise.then Chaining', () => {
     // TODO: Create a Promise chain that:
     // 1. Resolves with the number 5
     // 2. Multiplies by 2 in the next .then
@@ -148,7 +148,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 9: Promise Error Handling
   // ============================================
-  exercise('Promise Error Handling', () => {
+  await exercise('Promise Error Handling', () => {
     // TODO: Create a Promise chain where:
     // 1. The first Promise resolves with 10
     // 2. The second .then throws an error
@@ -170,7 +170,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 10: async Functions
   // ============================================
-  exercise('async Functions', () => {
+  await exercise('async Functions', () => {
     // TODO: Create an async function 'fetchData' that:
     // - Waits 1 second
     // - Returns 'Data loaded'
@@ -188,7 +188,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 11: await Keyword
   // ============================================
-  exercise('await Keyword', async () => {
+  await exercise('await Keyword', async () => {
     // Note: This exercise function is async so we can use await
 
     function delay(ms) {
@@ -206,7 +206,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 12: async/await Error Handling
   // ============================================
-  exercise('async/await Error Handling', async () => {
+  await exercise('async/await Error Handling', async () => {
     function riskyOperation() {
       return new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error('Operation failed')), 100)
@@ -224,7 +224,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 13: Sequential vs Parallel
   // ============================================
-  exercise('Sequential vs Parallel', async () => {
+  await exercise('Sequential vs Parallel', async () => {
     function task(name, duration) {
       return new Promise(resolve => {
         setTimeout(() => resolve(`${name} done`), duration)
@@ -251,7 +251,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 14: Promise.all
   // ============================================
-  exercise('Promise.all', async () => {
+  await exercise('Promise.all', async () => {
     const promises = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)]
 
     // TODO: Use Promise.all to wait for all promises
@@ -263,7 +263,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 15: Promise.all with Rejection
   // ============================================
-  exercise('Promise.all with Rejection', async () => {
+  await exercise('Promise.all with Rejection', async () => {
     const promises = [Promise.resolve(1), Promise.reject(new Error('Failed')), Promise.resolve(3)]
 
     // TODO: Use Promise.all and try/catch
@@ -280,7 +280,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 16: Promise.allSettled
   // ============================================
-  exercise('Promise.allSettled', async () => {
+  await exercise('Promise.allSettled', async () => {
     const promises = [Promise.resolve(1), Promise.reject(new Error('Failed')), Promise.resolve(3)]
 
     // TODO: Use Promise.allSettled instead of Promise.all
@@ -292,7 +292,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 17: Promise.race
   // ============================================
-  exercise('Promise.race', async () => {
+  await exercise('Promise.race', async () => {
     function delay(ms, value) {
       return new Promise(resolve => setTimeout(() => resolve(value), ms))
     }
@@ -310,7 +310,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 18: Dynamic Imports
   // ============================================
-  exercise('Dynamic Imports', async () => {
+  await exercise('Dynamic Imports', async () => {
     // TODO: Use dynamic import to load a module
     // Note: This will fail if the module doesn't exist - that's ok for now
 
@@ -326,7 +326,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 19: Async Iteration
   // ============================================
-  exercise('Async Iteration', async () => {
+  await exercise('Async Iteration', async () => {
     const urls = ['url1', 'url2', 'url3']
 
     // Simulate fetching data
@@ -350,7 +350,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 20: Practical Challenge - Retry Logic
   // ============================================
-  exercise('Practical Challenge - Retry Logic', async () => {
+  await exercise('Practical Challenge - Retry Logic', async () => {
     // TODO: Create an async function 'retryOperation' that:
     // - Takes an async function and max retries
     // - Tries to execute the function
@@ -382,7 +382,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 21: Practical Challenge - Timeout Wrapper
   // ============================================
-  exercise('Practical Challenge - Timeout Wrapper', async () => {
+  await exercise('Practical Challenge - Timeout Wrapper', async () => {
     // TODO: Create a function 'withTimeout' that:
     // - Takes a Promise and a timeout duration
     // - Returns a Promise that rejects if timeout is reached
@@ -407,7 +407,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 22: Practical Challenge - Queue
   // ============================================
-  exercise('Practical Challenge - Queue', async () => {
+  await exercise('Practical Challenge - Queue', async () => {
     // TODO: Create an async function 'processQueue' that:
     // - Takes an array of async functions
     // - Processes them one at a time (sequential)
@@ -441,7 +441,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 23: Practical Challenge - Debounce
   // ============================================
-  exercise('Practical Challenge - Debounce', () => {
+  await exercise('Practical Challenge - Debounce', () => {
     // TODO: Create a debounce function that:
     // - Takes a function and delay
     // - Returns a new function
@@ -463,7 +463,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 24: Understanding Promise States
   // ============================================
-  exercise('Understanding Promise States', async () => {
+  await exercise('Understanding Promise States', async () => {
     // Promises have three states: pending, fulfilled, rejected
 
     const pending = new Promise(() => {}) // Never resolves
@@ -484,7 +484,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 25: Common Async Mistakes
   // ============================================
-  exercise('Common Async Mistakes', () => {
+  await exercise('Common Async Mistakes', () => {
     // Mistake 1: Forgetting to await
     // async function bad() {
     //   const result = fetch('url')  // Returns a Promise, not the data!
@@ -514,7 +514,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Exercise 26: Fix the Bugs
   // ============================================
-  exercise('Fix the Bugs', async () => {
+  await exercise('Fix the Bugs', async () => {
     // Bug 1: Missing await
     // async function getData() {
     //   const response = fetch('url')
@@ -541,7 +541,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Bonus Challenge: Async Pool
   // ============================================
-  exercise('Bonus Challenge - Async Pool', async () => {
+  await exercise('Bonus Challenge - Async Pool', async () => {
     // TODO: Create a function 'asyncPool' that:
     // - Takes an array of items and an async function
     // - Processes items with a maximum concurrency limit
@@ -558,7 +558,7 @@ lesson('JavaScript Asynchronous Programming', () => {
   // ============================================
   // Super Bonus: Async Generator
   // ============================================
-  exercise('Super Bonus - Async Generator', async () => {
+  await exercise('Super Bonus - Async Generator', async () => {
     // TODO: Create an async generator that yields delayed values
 
     async function* countWithDelay(max) {
