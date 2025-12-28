@@ -425,10 +425,12 @@ If the terminal doesn't work:
 - [006. Objects](./006-Objects)
 - [007. Arrays](./007-Arrays)
 - [008. Built-in Objects and Utilities](./008-Built-in%20Objects%20and%20Utilities)
-- [009. Equality, Types, and Coercion](./009-Equality,%20Types,%20and%20Coercion)
-- [010. Error Handling](./010-Error%20Handling)
-- [011. Modules](./011-Modules)
-- [012. Asynchronous JavaScript](./012-Asynchronous%20JavaScript)
+- [009. Classes and Prototypes]()
+- [010. Equality, Types, and Coercion](./010-Equality,%20Types,%20and%20Coercion)
+- [011. Error Handling](./011-Error%20Handling)
+- [012. Modules](./012-Modules)
+- [013. Asynchronous JavaScript](./013-Asynchronous%20JavaScript)
+- [014. Working with APIs](./014-Working%20with%20APIs)
 
 ## Getting Help
 

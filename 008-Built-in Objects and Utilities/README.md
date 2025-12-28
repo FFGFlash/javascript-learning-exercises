@@ -509,9 +509,4 @@ You should always use **primitive values**, not `new String()` or `new Number()`
 - Math, Date, and JSON handle common real-world problems
 - Wrapper objects expose useful methods on primitives
 
-In the next lesson, we'll explore **types, equality, and coercion** &mdash; and why
-JavaScript sometimes behaves in surprising ways.
-
----
-
 ---
